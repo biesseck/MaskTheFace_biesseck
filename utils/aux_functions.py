@@ -16,6 +16,10 @@ from zipfile import ZipFile
 from tqdm import tqdm
 import bz2, shutil
 
+# Bernardo
+import sys
+import dlib
+
 
 def download_dlib_model():
     print_orderly("Get dlib model", 60)
@@ -596,6 +600,10 @@ def mask_image(image_path, args):
     mask_binary_array = []
     mask = []
     for (i, face_location) in enumerate(face_locations):
+
+        # Bernardo
+        if isinstance(face_location, dlib.mmod_rectangle): face_location = face_location.rect
+
         shape = args.predictor(gray, face_location)
         shape = face_utils.shape_to_np(shape)
         face_landmarks = shape_to_landmarks(shape)
@@ -651,7 +659,8 @@ def is_image(path):
         return False 
 
 
-def get_available_mask_types(config_filename="masks/masks.cfg"):
+# def get_available_mask_types(config_filename="masks/masks.cfg"):
+def get_available_mask_types(config_filename="masks/masks_without_gas_empty_inpaint.cfg"):
     parser = ConfigParser()
     parser.optionxform = str
     parser.read(config_filename)

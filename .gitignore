@@ -25,3 +25,8 @@ datasets
 *.dat
 *.docx
 
+# Bernardo
+*.dat.bz2
+*.jpg
+*.png
+
