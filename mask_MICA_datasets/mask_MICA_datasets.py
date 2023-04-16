@@ -191,11 +191,6 @@ if __name__ == '__main__':
 
     args = init_facedetector_and_maskcode(args)
 
-    # apply mask
     apply_mask_to_face_images(args, img_paths)
-
-    # normalize masked imgs
-
-    # save masked imgs as 'png' and 'npy'
 
     # create new MICA image_paths for each dataset
